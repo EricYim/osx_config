@@ -1,0 +1,29 @@
+[user]
+	name = Eric Yim
+	email = nacchii@gmail.com
+[color]
+	ui = true
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	mbr = branch --merged
+	nbr = branch --no-merged
+	apply = apply --whitespace=fix
+	rebase = rebase --whitespace=fix
+	cia = commit -a
+	unmod = checkout --
+	track = checkout --track
+	ref = reflog
+	pull = pull --no-commit
+[diff]
+	external = /Users/nacchii/bin/git-diff-cmd.sh
+[core]
+	autocrlf = input
+	trustctime = false
+[github]
+	user = nacchii
+	token = 77c2952fcf67ce6f83374622676b6bff
