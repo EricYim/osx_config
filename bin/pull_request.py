@@ -12,7 +12,7 @@ import tkMessageBox
 # ACCESS_TOKEN = '7bdf43eb84d00dc6e7c9ca26f1ac96a5817110d2'
 # BASE_URI = ' https://api.github.com/repos/EricYim/github_api_testing'
 USERNAME = 'eric-yim-iugo'
-ACCESS_TOKEN = '8fb5cc6e0de92c07ef670b712a9a14763541e131'
+ACCESS_TOKEN = '4780bfbad22a75a3cf7e01cdd055f21c826e0051'
 BASE_URI = ' https://api.github.com/repos/iugomobile/knights_client'
 
 CREDENTIALS = ' -u ' + USERNAME + ':' + ACCESS_TOKEN
@@ -31,7 +31,7 @@ def create_pull_request(args):
     pull_request_head = args.head
     if not pull_request_head:
         pull_request_head = subprocess.check_output('git rev-parse --abbrev-ref HEAD', shell=True)[:-1]
-    pull_request_head = USERNAME + ':' + pull_request_head
+    pull_request_head = 'iugomobile:' + pull_request_head
     pull_request_base = args.base
     pull_request_body = args.body
 
