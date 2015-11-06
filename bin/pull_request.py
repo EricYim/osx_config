@@ -46,7 +46,7 @@ def create_pull_request(args):
     os.system('curl' + CREDENTIALS + post_params + uri)
 
 def main(argv):
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='%(prog)s "pull request title" development -b "pull request description"')
     parser.add_argument("title", help="pull request title")
     parser.add_argument("-s", "--head", help="source branch")
     parser.add_argument("base", help="destination branch")
