@@ -1,8 +1,11 @@
 [user]
 	name = Eric Yim
-	email = nacchii@gmail.com
+	email = eric.yim@iugome.com
 [color]
 	ui = true
+	diff = auto
+ 	status = auto
+ 	branch = auto
 [alias]
 	co = checkout
 	br = branch
@@ -20,19 +23,27 @@
 	ref = reflog
 	pull = pull --no-commit
 [diff]
-	external = /Users/eric/bin/git-diff-cmd.sh
+	external = /Users/ericyim/bin/git-diff-cmd.sh
 [core]
-	autocrlf = input
+	autocrlf = false
 	trustctime = false
-	excludesfile = /Users/eric/.gitignore_global
+	excludesfile = /Users/ericyim/.gitignore_global
+	whitespace = trailing-space,space-before-tab
 [github]
 	user = nacchii
 	token = 77c2952fcf67ce6f83374622676b6bff
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+	path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 	trustExitCode = true
+[svn]
+	rmdir = true
+[apply]
+	whitespace = fix
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
 [credential]
 	helper = osxkeychain

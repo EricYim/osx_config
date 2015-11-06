@@ -11,6 +11,10 @@ if [ -f ~/.git-completion.bash ]; then
 	source ~/.git-completion.bash
 fi
 
+for f in ~/.sh/*.sh; do
+    source $f
+done
+
 # Locate virtualenvwrapper binary
 if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
     export VENVWRAP=~/.local/bin/virtualenvwrapper.sh
@@ -95,7 +99,7 @@ function ll(){ ls -l "$@"| egrep "^d" ; ls -lB "$@" 2>&-| \
 function my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,time,command ; }
 function pp() { my_ps -f | awk '!/awk/ && $0~var' var=${1:-".*"} ; }
 
-function findps() 
+function findps()
 {
     local args=""
     if [ "$#" -gt 0 ]; then
@@ -237,11 +241,11 @@ complete -f -o default -X '!*.pl'  perl perl5
 COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
 
 
-_get_longopts() 
-{ 
+_get_longopts()
+{
     #$1 --help | sed  -e '/--/!d' -e 's/.*--\([^[:space:].,]*\).*/--\1/'| \
 #grep ^"$2" |sort -u ;
-    $1 --help | grep -o -e "--[^[:space:].,]*" | grep -e "$2" |sort -u 
+    $1 --help | grep -o -e "--[^[:space:].,]*" | grep -e "$2" |sort -u
 }
 
 _longopts()
@@ -427,7 +431,7 @@ _meta_comp()
     COMPREPLY=()
     cur=${COMP_WORDS[COMP_CWORD]}
     cmdline=${COMP_WORDS[@]}
-    if [ $COMP_CWORD = 1 ]; then  
+    if [ $COMP_CWORD = 1 ]; then
          COMPREPLY=( $( compgen -c $cur ) )
     else
         cmd=${COMP_WORDS[1]}            # Find command.
@@ -457,10 +461,14 @@ _meta_comp()
         fi
 
     fi
-    
+
 }
 
 
 complete -o default -F _meta_comp nohup \
 eval exec trace truss strace sotruss gdb
 complete -o default -F _meta_comp command type which man nice time
+
+syspip() {
+    PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
